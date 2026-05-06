@@ -1,0 +1,12 @@
+name: my-research-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - numpy=1.24.3
+  - scipy=1.11.0
+  - matplotlib=3.7.1
+  - pandas=2.0.2
+  - pip:
+    - fenics==2019.1.0   # example FEA dependency

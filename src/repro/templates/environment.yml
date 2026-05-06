@@ -1,0 +1,12 @@
+name: my-research-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python={python_version}
+  - numpy
+  - scipy
+  - matplotlib
+  - pandas
+  - pip:
+    - []  # add pip-only packages here
