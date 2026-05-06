@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "repro-check"
+name = "research-reproducability"
 version = "0.1.0"
 description = "Audit research codebases for reproducibility issues"
 readme = "README.md"

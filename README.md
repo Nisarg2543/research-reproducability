@@ -3,7 +3,7 @@
 **Audit any research codebase for reproducibility issues in seconds.**
 
 [![CI](https://github.com/Nisarg2543/research-reproducability/actions/workflows/ci.yml/badge.svg)](https://github.com/Nisarg2543/research-reproducability/actions)
-[![PyPI](https://img.shields.io/pypi/v/repro-check.svg)](https://pypi.org/project/repro-check/)
+[![PyPI](https://img.shields.io/pypi/v/research-reproducability.svg)](https://pypi.org/project/research-reproducability/)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://pypi.org/project/repro-check/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
