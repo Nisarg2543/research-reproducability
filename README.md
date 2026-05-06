@@ -55,35 +55,42 @@ repro-check --path /path/to/code --fix
 ### Example output
 
 ```
-╭──────────────────────────────────────────╮
-│ Reproducibility Audit                    │
-│ Path: /home/alice/cfd-solver             │
-│ Score: 52/100                            │
-╰──────────────────────────────────────────╯
+╭──────────────────────────────────────────────────────────────────────────────╮
+│ Reproducibility Audit                                                        │
+│ Path: /home/alice/cfd-demo                                                   │
+│ Score: 7/100                                                                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
 
-✗ CRITICAL (1)
-  Environment — /
-    No environment specification found
-    Fix: Run: pip freeze > requirements.txt
-
-⚠ HIGH (2)
+⚠ HIGH (3)
   Environment — requirements.txt
-    Unpinned packages: numpy, scipy, fenics
+    Unpinned packages: numpy, scipy, matplotlib, pandas
     Fix: Pin versions: pip freeze > requirements.txt
-  Portability — solver/mesh.py
-    Hardcoded absolute path: '/home/alice/data/mesh.msh'
-    Fix: Replace with Path(__file__).parent / 'relative/path'
+  Portability — simulate.py
+    Hardcoded absolute path: '/home/alice/simulation/mesh.npy'
+    Fix: Replace with Path(__file__).parent / 'relative/path' or os.path.join(base_dir, ...)
+  Portability — postprocess.py
+    Hardcoded absolute path: '/home/alice/simulation/output.csv'
+    Fix: Replace with Path(__file__).parent / 'relative/path' or os.path.join(base_dir, ...)
 
-~ MEDIUM (3)
+~ MEDIUM (6)
+  Documentation — /
+    No README found
+    Fix: Create README.md with: what the code does, how to set up the environment, how to run it
+  Documentation — /
+    No setup/install documentation found
+    Fix: Create SETUP.md with step-by-step environment setup instructions
+  Data — /
+    Code references data files but no data/ directory found
+    Fix: Create a data/ directory and document where data comes from (download link, DOI, or included in repo)
+  Code Quality — simulate.py
+    Wildcard import (from X import *) makes dependencies invisible and breaks across versions
+    Fix: Replace with explicit imports: from module import SpecificClass, specific_function
   Version Control — /
-    No git repository found
-    Fix: git init && git add . && git commit -m 'Initial commit'
-  MATLAB — startup.m missing
-    addpath() calls found but no startup.m to document toolbox paths
-    Fix: Create startup.m listing all required toolbox paths
+    No git repository found — code changes are not version controlled
+    Fix: Run: git init && git add . && git commit -m 'Initial commit'
   Reproducibility — simulate.py
-    Random operations without seed
-    Fix: Add np.random.seed(42) at script start
+    Random operations without seed — statistical results not reproducible
+    Fix: Add np.random.seed(42) or use np.random.default_rng(42) at script start
 ```
 
 ---
