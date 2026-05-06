@@ -12,7 +12,7 @@ console = Console()
 @click.option("--path", default=".", show_default=True, help="Directory to audit")
 @click.option("--output", default=None, help="Write report to this file (.md, .json, or .pdf)")
 @click.option("--fix", is_flag=True, help="Auto-generate missing environment and documentation files")
-@click.version_option(package_name="repro-check")
+@click.version_option(package_name="research-reproducability")
 def main(path, output, fix):
     """Audit a research codebase for reproducibility issues."""
     from repro.checker import ReproChecker
